@@ -36,7 +36,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.MissingMappingsEvent;
 import samebutdifferent.ecologics.Ecologics;
 import samebutdifferent.ecologics.block.FloweringAzaleaLogBlock;
-import samebutdifferent.ecologics.block.PotBlock;
 import samebutdifferent.ecologics.platform.forge.CommonPlatformHelperImpl;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import samebutdifferent.ecologics.registry.ModItems;
@@ -114,7 +113,6 @@ public class EcologicsForge {
                                 ModBlocks.SEASHELL_TILE_STAIRS,
                                 ModBlocks.SEASHELL_TILE_SLAB,
                                 ModBlocks.SEASHELL_TILE_WALL,
-                                ModBlocks.POT,
                                 ModBlocks.THIN_ICE,
                                 ModBlocks.ICE_BRICKS,
                                 ModBlocks.ICE_BRICK_STAIRS,
@@ -216,20 +214,7 @@ public class EcologicsForge {
         BlockPos pos = event.getPos();
         BlockState state = level.getBlockState(pos);
         InteractionHand hand = event.getHand();
-        if (state.is(ModBlocks.POT.get()) && player.isCrouching()) {
-            if (player.getMainHandItem().getItem() instanceof PickaxeItem && hand.equals(InteractionHand.MAIN_HAND)){
-                level.setBlockAndUpdate(pos, state.cycle(PotBlock.CHISEL));
-                level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-                player.swing(InteractionHand.MAIN_HAND);
-                player.getMainHandItem().hurtAndBreak(1, player, (plr) -> plr.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-            }
-            if (player.getOffhandItem().getItem() instanceof PickaxeItem && !(player.getMainHandItem().getItem() instanceof PickaxeItem) && hand.equals(InteractionHand.OFF_HAND)){
-                level.setBlockAndUpdate(pos, state.cycle(PotBlock.CHISEL));
-                level.playSound(null, pos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, level.getRandom().nextFloat() * 0.4F + 0.8F);
-                player.swing(InteractionHand.OFF_HAND);
-                player.getOffhandItem().hurtAndBreak(1, player, (plr) -> plr.broadcastBreakEvent(InteractionHand.OFF_HAND));
-            }
-        }
+        
         if (!event.getLevel().isClientSide) {
             ItemStack stack = event.getItemStack();
             Direction direction = event.getHitVec().getDirection().getAxis() == Direction.Axis.Y ? event.getHitVec().getDirection().getOpposite() : event.getHitVec().getDirection();
