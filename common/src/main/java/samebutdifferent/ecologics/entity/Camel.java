@@ -136,7 +136,7 @@ public class Camel extends AbstractChestedHorse {
     }
 
     @Override
-    public boolean canJump(Player player) {
+    public boolean canJump() {
         return false;
     }
 

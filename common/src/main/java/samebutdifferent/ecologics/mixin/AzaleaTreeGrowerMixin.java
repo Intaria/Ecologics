@@ -3,7 +3,6 @@ package samebutdifferent.ecologics.mixin;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.features.TreeFeatures;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.grower.AbstractTreeGrower;
@@ -21,7 +20,7 @@ public class AzaleaTreeGrowerMixin extends AbstractTreeGrower {
 
     @Nullable
     @Override
-    public ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
+    public Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource p_204307_, boolean p_204308_) {
         if (ConfigPlatformHelper.replaceAzaleaTree()) {
             return null;
         } else {

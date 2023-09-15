@@ -3,7 +3,6 @@ package samebutdifferent.ecologics.block.grower;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Registry;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -19,7 +18,7 @@ import java.util.Optional;
 public abstract class ModTreeGrower extends AbstractTreeGrower {
     @Nullable
     @Override
-    protected ResourceKey<ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource random, boolean hasFlowers) {
+    protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(RandomSource p_222910_, boolean p_222911_) {
         return null;
     }
 
@@ -27,8 +26,8 @@ public abstract class ModTreeGrower extends AbstractTreeGrower {
 
     @Override
     public boolean growTree(ServerLevel level, ChunkGenerator chunkGenerator, BlockPos pos, BlockState state, RandomSource random) {
-        Optional<Holder.Reference<ConfiguredFeature<?, ?>>> optional = level.registryAccess().registryOrThrow(Registries.CONFIGURED_FEATURE).getHolder(
-                ResourceKey.create(Registries.CONFIGURED_FEATURE, getConfiguredFeatureLocation()));
+        Optional<Holder<ConfiguredFeature<?, ?>>> optional = level.registryAccess().registryOrThrow(Registry.CONFIGURED_FEATURE_REGISTRY).getHolder(
+                ResourceKey.create(Registry.CONFIGURED_FEATURE_REGISTRY, getConfiguredFeatureLocation()));
         if (optional.isEmpty()) {
             return false;
         } else {
