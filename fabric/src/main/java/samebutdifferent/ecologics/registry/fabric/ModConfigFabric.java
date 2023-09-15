@@ -40,6 +40,8 @@ public class ModConfigFabric implements ConfigData {
         public boolean generatePricklyPears = true;
         @Comment("How often (in percentage) should prickly pears grow when a cactus reaches full height? Set it to 0.0 to disable this.")
         public double pricklyPearGrowthChance = 1.0;
+        @Comment("Generate ruins in deserts")
+        public boolean generateDesertRuins = true;
     }
 
     public static class Snowy {

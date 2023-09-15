@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "side": "ecologics:block/seashell_tiles",
-    "bottom": "ecologics:block/seashell_tiles",
-    "top": "ecologics:block/seashell_tiles"
-  }
-}
