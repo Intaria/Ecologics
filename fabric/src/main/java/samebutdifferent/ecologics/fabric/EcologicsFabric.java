@@ -33,7 +33,6 @@ import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import samebutdifferent.ecologics.Ecologics;
 import net.fabricmc.api.ModInitializer;
 import samebutdifferent.ecologics.block.FloweringAzaleaLogBlock;
-import samebutdifferent.ecologics.block.PotBlock;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import samebutdifferent.ecologics.registry.ModEntityTypes;
 import samebutdifferent.ecologics.registry.fabric.ModConfigFabric;
@@ -63,20 +62,7 @@ public class EcologicsFabric implements ModInitializer {
     public void registerEvents() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
             BlockState state = world.getBlockState(hitResult.getBlockPos());
-            if (state.is(ModBlocks.POT.get()) && player.isCrouching()) {
-                if (player.getMainHandItem().getItem() instanceof PickaxeItem && hand.equals(InteractionHand.MAIN_HAND)){
-                    world.setBlockAndUpdate(hitResult.getBlockPos(), state.cycle(PotBlock.CHISEL));
-                    world.playSound(null, hitResult.getBlockPos(), SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.4F + 0.8F);
-                    player.swing(InteractionHand.MAIN_HAND);
-                    player.getMainHandItem().hurtAndBreak(1, player, (plr) -> plr.broadcastBreakEvent(InteractionHand.MAIN_HAND));
-                }
-                if (player.getOffhandItem().getItem() instanceof PickaxeItem && !(player.getMainHandItem().getItem() instanceof PickaxeItem) && hand.equals(InteractionHand.OFF_HAND)){
-                    world.setBlockAndUpdate(hitResult.getBlockPos(), state.cycle(PotBlock.CHISEL));
-                    world.playSound(null, hitResult.getBlockPos(), SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 1.0F, world.getRandom().nextFloat() * 0.4F + 0.8F);
-                    player.swing(InteractionHand.OFF_HAND);
-                    player.getOffhandItem().hurtAndBreak(1, player, (plr) -> plr.broadcastBreakEvent(InteractionHand.OFF_HAND));
-                }
-            }
+
             ItemStack stack = player.getItemInHand(hand);
             Direction direction = hitResult.getDirection().getAxis() == Direction.Axis.Y ? hitResult.getDirection().getOpposite() : hitResult.getDirection();
             if (stack.is(Items.SHEARS)) {
@@ -121,13 +107,6 @@ public class EcologicsFabric implements ModInitializer {
                     (biomeSelector) -> biomeSelector.getBiomeKey().equals(Biomes.DESERT),
                     GenerationStep.Decoration.VEGETAL_DECORATION,
                     getPlacedFeatureKey("prickly_pear")
-            );
-        }
-        if (config.desert.generateDesertRuins) {
-            BiomeModifications.addFeature(
-                    (biomeSelector) -> biomeSelector.getBiomeKey().equals(Biomes.DESERT),
-                    GenerationStep.Decoration.VEGETAL_DECORATION,
-                    getPlacedFeatureKey("desert_ruin")
             );
         }
     }
