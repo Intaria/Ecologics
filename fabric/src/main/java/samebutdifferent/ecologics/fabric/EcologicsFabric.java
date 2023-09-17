@@ -23,7 +23,6 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
