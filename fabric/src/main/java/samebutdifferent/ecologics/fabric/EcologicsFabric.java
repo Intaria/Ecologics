@@ -23,6 +23,7 @@ import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.biome.Biomes;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -61,7 +62,6 @@ public class EcologicsFabric implements ModInitializer {
     public void registerEvents() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
             BlockState state = world.getBlockState(hitResult.getBlockPos());
-
             ItemStack stack = player.getItemInHand(hand);
             Direction direction = hitResult.getDirection().getAxis() == Direction.Axis.Y ? hitResult.getDirection().getOpposite() : hitResult.getDirection();
             if (stack.is(Items.SHEARS)) {
