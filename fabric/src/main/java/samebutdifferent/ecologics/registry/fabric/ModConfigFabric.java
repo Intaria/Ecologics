@@ -57,8 +57,6 @@ public class ModConfigFabric implements ConfigData {
     }
 
     public static class LushCaves {
-        @Comment("Vanilla Azalea trees will have azalea logs instead of oak logs. If you disable this, you can still obtain this mod's azalea wood by growing a tree from an Azalea Flower")
-        public boolean replaceAzaleaTree = true;
         @Comment("Generate surface moss in lush cave biomes")
         public boolean generateSurfaceMoss = true;
     }

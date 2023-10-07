@@ -7,9 +7,4 @@ public class ConfigPlatformHelper {
     public static double coconutCrabSpawnChance() {
         throw new AssertionError();
     }
-
-    @ExpectPlatform
-    public static boolean replaceAzaleaTree() {
-        throw new AssertionError();
-    }
 }

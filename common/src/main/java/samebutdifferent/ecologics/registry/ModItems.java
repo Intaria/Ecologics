@@ -33,14 +33,8 @@ public class ModItems {
     public static final Supplier<Item> PENGUIN_FEATHER = CommonPlatformHelper.registerItem("penguin_feather", () -> new Item(new Item.Properties().tab(Ecologics.TAB)));
     public static final Supplier<Item> WALNUT_SIGN = CommonPlatformHelper.registerItem("walnut_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(Ecologics.TAB), ModBlocks.WALNUT_SIGN.get(), ModBlocks.WALNUT_WALL_SIGN.get()));
     public static final Supplier<Item> WALNUT = CommonPlatformHelper.registerItem("walnut", () -> new Item(new Item.Properties().tab(Ecologics.TAB).food(new FoodProperties.Builder().nutrition(1).saturationMod(0.0F).fast().build())));
-    public static final Supplier<Item> AZALEA_SIGN = CommonPlatformHelper.registerItem("azalea_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(Ecologics.TAB), ModBlocks.AZALEA_SIGN.get(), ModBlocks.AZALEA_WALL_SIGN.get()));
-    public static final Supplier<Item> FLOWERING_AZALEA_SIGN = CommonPlatformHelper.registerItem("flowering_azalea_sign", () -> new SignItem(new Item.Properties().stacksTo(16).tab(Ecologics.TAB), ModBlocks.FLOWERING_AZALEA_SIGN.get(), ModBlocks.FLOWERING_AZALEA_WALL_SIGN.get()));
     public static final Supplier<Item> COCONUT_BOAT = CommonPlatformHelper.registerItem("coconut_boat", () -> new ModBoatItem(false, ModBoat.Type.COCONUT, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
     public static final Supplier<Item> WALNUT_BOAT = CommonPlatformHelper.registerItem("walnut_boat", () -> new ModBoatItem(false, ModBoat.Type.WALNUT, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
-    public static final Supplier<Item> AZALEA_BOAT = CommonPlatformHelper.registerItem("azalea_boat", () -> new ModBoatItem(false, ModBoat.Type.AZALEA, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
-    public static final Supplier<Item> FLOWERING_AZALEA_BOAT = CommonPlatformHelper.registerItem("flowering_azalea_boat", () -> new ModBoatItem(false, ModBoat.Type.FLOWERING_AZALEA, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
     public static final Supplier<Item> COCONUT_CHEST_BOAT = CommonPlatformHelper.registerItem("coconut_chest_boat", () -> new ModBoatItem(true, ModBoat.Type.COCONUT, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
     public static final Supplier<Item> WALNUT_CHEST_BOAT = CommonPlatformHelper.registerItem("walnut_chest_boat", () -> new ModBoatItem(true, ModBoat.Type.WALNUT, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
-    public static final Supplier<Item> AZALEA_CHEST_BOAT = CommonPlatformHelper.registerItem("azalea_chest_boat", () -> new ModBoatItem(true, ModBoat.Type.AZALEA, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
-    public static final Supplier<Item> FLOWERING_AZALEA_CHEST_BOAT = CommonPlatformHelper.registerItem("flowering_azalea_chest_boat", () -> new ModBoatItem(true, ModBoat.Type.FLOWERING_AZALEA, new Item.Properties().stacksTo(1).tab(Ecologics.TAB)));
-}
+    }

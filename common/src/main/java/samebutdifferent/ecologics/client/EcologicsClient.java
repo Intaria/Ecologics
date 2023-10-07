@@ -23,12 +23,6 @@ public class EcologicsClient {
         ClientPlatformHelper.setRenderLayer(ModBlocks.WALNUT_SAPLING, RenderType.cutout());
         ClientPlatformHelper.setRenderLayer(ModBlocks.WALNUT_DOOR, RenderType.cutout());
         ClientPlatformHelper.setRenderLayer(ModBlocks.POTTED_WALNUT_SAPLING, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.AZALEA_FLOWER, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.AZALEA_DOOR, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.FLOWERING_AZALEA_DOOR, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.AZALEA_TRAPDOOR, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.FLOWERING_AZALEA_TRAPDOOR, RenderType.cutout());
-        ClientPlatformHelper.setRenderLayer(ModBlocks.POTTED_AZALEA_FLOWER, RenderType.cutout());
         ClientPlatformHelper.setRenderLayer(ModBlocks.SURFACE_MOSS, RenderType.cutoutMipped());
 
         // Entity Renderers
@@ -46,7 +40,5 @@ public class EcologicsClient {
     public static void addWoodTypes() {
         ClientPlatformHelper.addWoodType(ModWoodType.COCONUT);
         ClientPlatformHelper.addWoodType(ModWoodType.WALNUT);
-        ClientPlatformHelper.addWoodType(ModWoodType.AZALEA);
-        ClientPlatformHelper.addWoodType(ModWoodType.FLOWERING_AZALEA);
     }
 }

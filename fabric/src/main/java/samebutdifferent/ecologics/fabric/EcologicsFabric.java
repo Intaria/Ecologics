@@ -32,7 +32,6 @@ import net.minecraft.world.level.levelgen.GenerationStep;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
 import samebutdifferent.ecologics.Ecologics;
 import net.fabricmc.api.ModInitializer;
-import samebutdifferent.ecologics.block.FloweringAzaleaLogBlock;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import samebutdifferent.ecologics.registry.ModEntityTypes;
 import samebutdifferent.ecologics.registry.fabric.ModConfigFabric;
@@ -46,7 +45,6 @@ public class EcologicsFabric implements ModInitializer {
         AutoConfig.register(ModConfigFabric.class, GsonConfigSerializer::new);
         Ecologics.init();
         registerEntityAttributes();
-        registerEvents();
         addFeatures();
         replaceFeatures();
         addSpawns();
@@ -57,25 +55,6 @@ public class EcologicsFabric implements ModInitializer {
         Map<EntityType<? extends LivingEntity>, AttributeSupplier.Builder> attributes = new HashMap<>();
         Ecologics.registerEntityAttributes(attributes);
         attributes.forEach(FabricDefaultAttributeRegistry::register);
-    }
-
-    public void registerEvents() {
-        UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-            BlockState state = world.getBlockState(hitResult.getBlockPos());
-            ItemStack stack = player.getItemInHand(hand);
-            Direction direction = hitResult.getDirection().getAxis() == Direction.Axis.Y ? hitResult.getDirection().getOpposite() : hitResult.getDirection();
-            if (stack.is(Items.SHEARS)) {
-                if (state.is(Blocks.FLOWERING_AZALEA)) {
-                    FloweringAzaleaLogBlock.shearAzalea(world, player, hitResult.getBlockPos(), stack, hand, direction, Blocks.AZALEA.defaultBlockState());
-                    player.swing(hand, true);
-                }
-                if (state.is(Blocks.FLOWERING_AZALEA_LEAVES)) {
-                    FloweringAzaleaLogBlock.shearAzalea(world, player, hitResult.getBlockPos(), stack, hand, direction, Blocks.AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, state.getValue(LeavesBlock.PERSISTENT)).setValue(LeavesBlock.DISTANCE, state.getValue(LeavesBlock.DISTANCE)));
-                    player.swing(hand, true);
-                }
-            }
-            return InteractionResult.PASS;
-        });
     }
 
     public void addFeatures() {
@@ -113,10 +92,6 @@ public class EcologicsFabric implements ModInitializer {
     public void replaceFeatures() {
         ModConfigFabric config = AutoConfig.getConfigHolder(ModConfigFabric.class).getConfig();
         BiomeModifications.create(new ResourceLocation(Ecologics.MOD_ID, "remove_azalea_trees")).add(ModificationPhase.REPLACEMENTS, biomeSelectionContext -> (biomeSelectionContext.getBiomeKey().equals(Biomes.LUSH_CAVES)), (c) -> {
-            if (config.lushCaves.replaceAzaleaTree) {
-                c.getGenerationSettings().removeBuiltInFeature(CavePlacements.ROOTED_AZALEA_TREE.value());
-                c.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, getPlacedFeatureKey("rooted_azalea_tree"));
-            }
             if (config.lushCaves.generateSurfaceMoss) {
                 c.getGenerationSettings().removeBuiltInFeature(CavePlacements.CLASSIC_VINES.value());
                 c.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, getPlacedFeatureKey("surface_moss_patch"));

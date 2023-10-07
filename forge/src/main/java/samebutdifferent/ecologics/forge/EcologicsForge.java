@@ -32,7 +32,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.MissingMappingsEvent;
 import samebutdifferent.ecologics.Ecologics;
-import samebutdifferent.ecologics.block.FloweringAzaleaLogBlock;
 import samebutdifferent.ecologics.platform.forge.CommonPlatformHelperImpl;
 import samebutdifferent.ecologics.registry.ModBlocks;
 import samebutdifferent.ecologics.registry.forge.ModConfigForge;
@@ -88,29 +87,6 @@ public class EcologicsForge {
                 if (level.isEmptyBlock(pos.above(2)) && level.getRandom().nextFloat() <= ModConfigForge.PRICKLY_PEAR_GROWTH_CHANCE.get()) {
                     level.setBlock(pos.above(2), ModBlocks.PRICKLY_PEAR.get().defaultBlockState(), 2);
                     level.playSound(null, pos, SoundEvents.HONEY_BLOCK_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
-    public static void onRightClick(PlayerInteractEvent.RightClickBlock event) {
-        Level level = event.getLevel();
-        Player player = event.getEntity();
-        BlockPos pos = event.getPos();
-        BlockState state = level.getBlockState(pos);
-        InteractionHand hand = event.getHand();
-        if (!event.getLevel().isClientSide) {
-            ItemStack stack = event.getItemStack();
-            Direction direction = event.getHitVec().getDirection().getAxis() == Direction.Axis.Y ? event.getHitVec().getDirection().getOpposite() : event.getHitVec().getDirection();
-            if (stack.is(Items.SHEARS)) {
-                if (state.is(Blocks.FLOWERING_AZALEA)) {
-                    FloweringAzaleaLogBlock.shearAzalea(level, player, pos, stack, hand, direction, Blocks.AZALEA.defaultBlockState());
-                    player.swing(hand, true);
-                }
-                if (state.is(Blocks.FLOWERING_AZALEA_LEAVES)) {
-                    FloweringAzaleaLogBlock.shearAzalea(level, player, pos, stack, hand, direction, Blocks.AZALEA_LEAVES.defaultBlockState().setValue(LeavesBlock.PERSISTENT, state.getValue(LeavesBlock.PERSISTENT)).setValue(LeavesBlock.DISTANCE, state.getValue(LeavesBlock.DISTANCE)));
-                    player.swing(hand, true);
                 }
             }
         }

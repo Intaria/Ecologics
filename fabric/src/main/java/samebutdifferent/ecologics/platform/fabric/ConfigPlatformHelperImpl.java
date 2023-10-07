@@ -9,8 +9,4 @@ public class ConfigPlatformHelperImpl {
     public static double coconutCrabSpawnChance() {
         return config.beach.coconutCrabSpawnChance;
     }
-
-    public static boolean replaceAzaleaTree() {
-        return config.lushCaves.replaceAzaleaTree;
-    }
 }
