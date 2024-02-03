@@ -91,12 +91,6 @@ public class EcologicsFabric implements ModInitializer {
 
     public void replaceFeatures() {
         ModConfigFabric config = AutoConfig.getConfigHolder(ModConfigFabric.class).getConfig();
-        BiomeModifications.create(new ResourceLocation(Ecologics.MOD_ID, "remove_azalea_trees")).add(ModificationPhase.REPLACEMENTS, biomeSelectionContext -> (biomeSelectionContext.getBiomeKey().equals(Biomes.LUSH_CAVES)), (c) -> {
-            if (config.lushCaves.generateSurfaceMoss) {
-                c.getGenerationSettings().removeBuiltInFeature(CavePlacements.CLASSIC_VINES.value());
-                c.getGenerationSettings().addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, getPlacedFeatureKey("surface_moss_patch"));
-            }
-        });
         BiomeModifications.create(new ResourceLocation(Ecologics.MOD_ID, "remove_oak_trees")).add(ModificationPhase.REPLACEMENTS, biomeSelectionContext -> (biomeSelectionContext.getBiomeKey().equals(Biomes.PLAINS)), (c) -> {
             if (config.plains.generateWalnutTrees) {
                 c.getGenerationSettings().removeBuiltInFeature(VegetationPlacements.TREES_PLAINS.value());
