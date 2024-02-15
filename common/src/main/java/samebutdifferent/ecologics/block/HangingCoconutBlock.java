@@ -53,11 +53,15 @@ public class HangingCoconutBlock extends FallingBlock implements BonemealableBlo
         }
     }
 
+    /*
     @Override
     public boolean isRandomlyTicking(BlockState pState) {
         return true;
     }
+    */
 
+    //TODO: return some
+    /*
     @Override
     public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRandom) {
         int age = pState.getValue(AGE);
@@ -72,6 +76,7 @@ public class HangingCoconutBlock extends FallingBlock implements BonemealableBlo
             }
         }
     }
+    */
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
@@ -135,6 +140,7 @@ public class HangingCoconutBlock extends FallingBlock implements BonemealableBlo
         return 3873032;
     }
 
+    /*
     @Override
     public void tick(BlockState pState, ServerLevel pLevel, BlockPos pPos, RandomSource pRand) {
         if ((pLevel.isEmptyBlock(pPos.above()) && pPos.getY() >= pLevel.getMinBuildHeight() && isFree(pLevel.getBlockState(pPos.below())))) {
@@ -144,6 +150,7 @@ public class HangingCoconutBlock extends FallingBlock implements BonemealableBlo
             pLevel.removeBlock(pPos, false);
         }
     }
+    */
 
     @Override
     public void onBrokenAfterFall(Level pLevel, BlockPos pPos, FallingBlockEntity pFallingBlock) {
